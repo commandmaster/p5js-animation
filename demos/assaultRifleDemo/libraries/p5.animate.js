@@ -1,3 +1,4 @@
+
 p5.prototype.animate = {};
 
 p5.prototype.animate.Animation = class {
@@ -45,8 +46,15 @@ p5.prototype.animate.Animation = class {
         let col = this.#frameIndex % this.colums;
 
         push();
-
         scale(this.#scale);
+
+        if (p5.prototype.animate.debugMode){
+            rectMode(CENTER);
+            noFill();
+            stroke(0, 0, 255);
+            rect(0, 0, this.#frameWidth, this.#frameHeight);
+        }
+
         const ctx = drawingContext;
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
@@ -106,14 +114,22 @@ p5.prototype.animate.Animator = class {
         if (this.#hidden) return;
         push();
         angleMode(DEGREES);
-        imageMode(CENTER);
-
-        translate(this.position.x, this.position.y);
-        translate(this.originOffset.x, this.originOffset.y);
-
         
 
-        rotate(this.rotation + (this.#flipped ? 0 : -180));
+        translate(this.position.x, this.position.y);
+
+        if (this.isFlipped && p5.prototype.animate.debugMode){
+            fill(255, 0, 255);
+            noStroke();
+            textSize(16);
+            textFont("Monospace");
+            textAlign(CENTER, CENTER);
+            text("FLIPPED", 0, -50);
+        }
+
+
+        translate(this.originOffset.x, this.originOffset.y);
+        rotate(this.rotation);
 
         if (this.#flipped){
             scale(-1, 1);
@@ -123,6 +139,7 @@ p5.prototype.animate.Animator = class {
 
         // Draw the current animation
         if (this.#currentAnimation){
+            imageMode(CENTER);
             this.#currentAnimation.draw();
         }
 
@@ -131,6 +148,8 @@ p5.prototype.animate.Animator = class {
             noStroke();
             fill(255, 0, 0);
             ellipse(0, 0, 4, 4);
+
+            
         }
         translate(-this.originOffset.x, -this.originOffset.y);
         pop();
