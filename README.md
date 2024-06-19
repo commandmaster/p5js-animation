@@ -13,6 +13,7 @@ Currently, no CDN is available, so the only way to use the library is to add the
 <script src="./p5.sound.min.js"></script> // You can ignore this line if you don't have the p5 sound library in your project 
 <script src="./p5.animate.js"></script>
 ```
-
+## Demos
+[Assault Rifle Basic Animation Demo](demos/assaultRifleDemo/index.html)
 
 
