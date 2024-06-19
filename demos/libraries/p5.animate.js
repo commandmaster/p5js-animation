@@ -46,11 +46,6 @@ p5.prototype.animate.Animation = class {
 
         push();
 
-        if ((this.#frameWidth > 100 || this.#frameHeight > 100) && this.scale > 2){
-            // Makes scaling look better on bigger images 
-            //noSmooth(); // Makes scaling look better
-        }
-        
         scale(this.#scale);
         const ctx = drawingContext;
         ctx.imageSmoothingEnabled = true;
