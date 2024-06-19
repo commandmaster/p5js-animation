@@ -14,6 +14,6 @@ Currently, no CDN is available, so the only way to use the library is to add the
 <script src="./p5.animate.js"></script>
 ```
 ## Demos
-[Assault Rifle Basic Animation Demo](demos/assaultRifleDemo/index.html)
+[Assault Rifle Basic Animation Demo](demos/assaultRifleDemo/)
 
 
